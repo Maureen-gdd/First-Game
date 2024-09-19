@@ -62,3 +62,6 @@ shape = SubResource("CircleShape2D_2k30a")
 scale = Vector2(1.89286, 1.89286)
 sprite_frames = SubResource("SpriteFrames_4n62v")
 script = ExtResource("5_ov4rj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
