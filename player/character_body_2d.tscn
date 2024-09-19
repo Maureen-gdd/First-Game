@@ -61,6 +61,7 @@ shape = SubResource("CircleShape2D_2k30a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.89286, 1.89286)
 sprite_frames = SubResource("SpriteFrames_4n62v")
+autoplay = "default"
 script = ExtResource("5_ov4rj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
