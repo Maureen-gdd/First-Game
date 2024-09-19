@@ -1,19 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://dra4s20nocs6r"]
+[gd_scene load_steps=11 format=3 uid="uid://dra4s20nocs6r"]
 
 [ext_resource type="Script" path="res://player/character_body_2d.gd" id="1_0xg06"]
-[ext_resource type="Texture2D" uid="uid://csvgn46rvni5t" path="res://icon.png" id="1_frm6u"]
-[ext_resource type="Script" path="res://player/sprite_2d.gd" id="3_arus7"]
+[ext_resource type="Texture2D" uid="uid://dj467glnibk3t" path="res://assets/FREE_Samurai 2D Pixel Art/FREE_Samurai 2D Pixel Art/Sprites/IDLE.png" id="4_em7sy"]
+[ext_resource type="Script" path="res://player/animated_sprite_2d.gd" id="5_ov4rj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2k30a"]
 radius = 45.0111
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sbrc"]
+atlas = ExtResource("4_em7sy")
+region = Rect2(0, 56, 93, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lv44"]
+atlas = ExtResource("4_em7sy")
+region = Rect2(93, 56, 93, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3njht"]
+atlas = ExtResource("4_em7sy")
+region = Rect2(186, 56, 93, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo45t"]
+atlas = ExtResource("4_em7sy")
+region = Rect2(279, 56, 93, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbpgp"]
+atlas = ExtResource("4_em7sy")
+region = Rect2(372, 56, 93, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4n62v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sbrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lv44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo45t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbpgp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -10)
 script = ExtResource("1_0xg06")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
-texture = ExtResource("1_frm6u")
-script = ExtResource("3_arus7")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_2k30a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.89286, 1.89286)
+sprite_frames = SubResource("SpriteFrames_4n62v")
+script = ExtResource("5_ov4rj")
