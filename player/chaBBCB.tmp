@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://player/animated_sprite_2d.gd" id="5_ov4rj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2k30a"]
-radius = 13.3417
+radius = 16.4924
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2sbrc"]
 atlas = ExtResource("4_em7sy")
@@ -118,7 +118,7 @@ disable_mode = 1
 script = ExtResource("1_0xg06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_2k30a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
