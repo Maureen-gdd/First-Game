@@ -627,6 +627,10 @@ sources/2 = SubResource("TileSetAtlasSource_2v33j")
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7f1uh")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, 0)
+zoom = Vector2(2, 2)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-295, -9)
 
@@ -639,11 +643,11 @@ position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_dedqr")
 
 [node name="CollisionTop" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(295, -157)
+position = Vector2(295, -155)
 shape = SubResource("RectangleShape2D_ru3c4")
 
 [node name="CollisionBottom" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(295, 171)
+position = Vector2(295, 168)
 shape = SubResource("RectangleShape2D_ru3c4")
 
 [node name="TileMap" type="TileMap" parent="."]
