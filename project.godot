@@ -13,8 +13,12 @@ config_version=5
 config/name="ProjetGodot1"
 config/description="Enter an interesting project description here!"
 run/main_scene="res://scenes/scene1.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.3", "C#")
 config/icon="res://icon.png"
+
+[dotnet]
+
+project/assembly_name="ProjetGodot1"
 
 [input]
 
