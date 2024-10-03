@@ -38,7 +38,7 @@ public partial class SaveManager : Node
 	
 	public void LoadGame(string cheminFichierSaveLoad)
 	{
-		if (!FileAccess.FileExists("user://savegame.save"))
+		if (!FileAccess.FileExists(cheminFichierSaveLoad))
 		{
 			return; // Error! We don't have a save to load.
 		}
@@ -55,7 +55,7 @@ public partial class SaveManager : Node
 
 		// Load the file line by line and process that dictionary to restore the object
 		// it represents.
-		using var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Read);
+		using var saveFile = FileAccess.Open(cheminFichierSaveLoad, FileAccess.ModeFlags.Read);
 
 		while (saveFile.GetPosition() < saveFile.GetLength())
 		{
