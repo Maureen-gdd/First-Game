@@ -39,7 +39,8 @@ public partial class character_body_2d : Godot.CharacterBody2D
 			{ "Filename", SceneFilePath },  // Scene file path
 			{ "Parent", GetParent().GetPath() },  // Parent node path to add the character to on load
 			{ "PosX", Position.X },
-			{ "PosY", Position.Y }
+			{ "PosY", Position.Y },
+			{ "Scene", GetTree().CurrentScene.Name }
 		};
 	}
 }

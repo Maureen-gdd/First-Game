@@ -68,7 +68,7 @@ public partial class SaveManager : Node
 			// Now we set the remaining variables.
 			foreach (var (key, value) in nodeData)
 			{
-				if (key == "Filename" || key == "Parent" || key == "PosX" || key == "PosY")
+				if (key == "Filename" || key == "Parent" || key == "PosX" || key == "PosY" || key == "Scene")
 				{
 					continue;
 				}
