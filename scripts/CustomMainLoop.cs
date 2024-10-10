@@ -4,23 +4,63 @@ using System;
 [GlobalClass]
 public partial class CustomMainLoop : SceneTree
 {
-	private static CustomMainLoop instance;
-
+	private static CustomMainLoop _instance;
+	private LevelManager _levelManager;
+	private SaveManager _saveManager;
+	
 	public CustomMainLoop()
 	{
-		instance = this;
+		_instance = this;
+		GD.Print("CustomMainLoop instantiated");
 	}
 	
-	public static CustomMainLoop Get()
+	public override void _Initialize()
+{
+	GD.Print("Initialized begins.......");
+	_levelManager = new LevelManager();
+	Root.AddChild(_levelManager);
+	//_levelManager.LoadLevel("scene2.tscn");
+	_saveManager = new SaveManager();
+	Root.AddChild(_saveManager);
+	
+	//OS.Connect("about_to_quit", this, nameof(OnAboutToQuit));
+	GD.Print("Initialization finish !");
+}
+
+
+	
+	public static CustomMainLoop GetInstance()
 	{
-		return instance;
+		if (_instance == null)
+		{
+			_instance = new CustomMainLoop();
+		}
+		return _instance;
 	}
-	public LevelManager GetLevelManager(LevelManager LevelManager)
+	
+	public LevelManager GetLevelManager()
 	{
-		return LevelManager;
+		return _levelManager;
 	}
-	public SaveManager GetSaveManager(SaveManager SaveManager)
+
+	public SaveManager GetSaveManager()
 	{
-		return SaveManager;
+		return _saveManager;
+	}
+
+	public override bool _Process(double delta)
+	{
+		if (Input.IsKeyPressed(Key.Escape))
+		{
+			_Finalize();
+			Quit();
+			_saveManager.SaveGame("user://savegame.save");
+			return true;
+		}
+		return false;
+	}
+	private void _Finalize()
+	{
+		GD.Print("Finalized finished !");
 	}
 }

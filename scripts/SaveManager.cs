@@ -3,43 +3,26 @@ using System;
 
 public partial class SaveManager : Node
 {
-	//var saveNodes = GetTree().GetNodesInGroup("Persist");
-	//foreach (Node saveNode in saveNodes)
-	//{
-		//// Now, we can call our save function on each node.
-	//}
-	
-	
-	//A voir qu'est ce qu'on veut sauvegarder
-	public Godot.Collections.Dictionary<string, Variant> Save()
-	{
-		return new Godot.Collections.Dictionary<string, Variant>()
-		{
-			{ "Filename", SceneFilePath },
-			{ "Parent", GetParent().GetPath() },
-			{ "PosX", Position.X }, // Vector2 is not supported by JSON
-			{ "PosY", Position.Y },
-			{ "Attack", Attack },
-			{ "Defense", Defense },
-			{ "CurrentHealth", CurrentHealth },
-			{ "MaxHealth", MaxHealth },
-			{ "Damage", Damage },
-			{ "Regen", Regen },
-			{ "Experience", Experience },
-			{ "Tnl", Tnl },
-			{ "Level", Level },
-			{ "AttackGrowth", AttackGrowth },
-			{ "DefenseGrowth", DefenseGrowth },
-			{ "HealthGrowth", HealthGrowth },
-			{ "IsAlive", IsAlive },
-			{ "LastAttack", LastAttack }
-		};
+	private static SaveManager instance;
+
+	public static SaveManager GetInstance() {
+	if (instance == null){
+		instance = new SaveManager();
+		}
+	return instance;
 	}
-	
+
+public override void _Ready()
+{
+	LoadGame("user://savegame.save");
+	GD.Print("Character Loaded !");
+}
+
 	public void LoadGame(string cheminFichierSaveLoad)
 	{
 		if (!FileAccess.FileExists(cheminFichierSaveLoad))
 		{
+			GD.Print($"No Save !");
 			return; // Error! We don't have a save to load.
 		}
 
@@ -47,6 +30,7 @@ public partial class SaveManager : Node
 		// This will vary wildly depending on the needs of a project, so take care with
 		// this step.
 		// For our example, we will accomplish this by deleting saveable objects.
+		
 		var saveNodes = GetTree().GetNodesInGroup("Persist");
 		foreach (Node saveNode in saveNodes)
 		{
@@ -56,9 +40,9 @@ public partial class SaveManager : Node
 		// Load the file line by line and process that dictionary to restore the object
 		// it represents.
 		using var saveFile = FileAccess.Open(cheminFichierSaveLoad, FileAccess.ModeFlags.Read);
-
 		while (saveFile.GetPosition() < saveFile.GetLength())
 		{
+			GD.Print($"testSave");
 			var jsonString = saveFile.GetLine();
 
 			// Creates the helper class to interact with JSON
@@ -78,7 +62,8 @@ public partial class SaveManager : Node
 			var newObject = newObjectScene.Instantiate<Node>();
 			GetNode(nodeData["Parent"].ToString()).AddChild(newObject);
 			newObject.Set(Node2D.PropertyName.Position, new Vector2((float)nodeData["PosX"], (float)nodeData["PosY"]));
-
+			
+			newObject.AddToGroup("Persist");
 			// Now we set the remaining variables.
 			foreach (var (key, value) in nodeData)
 			{
@@ -90,6 +75,7 @@ public partial class SaveManager : Node
 			}
 		}
 	}
+	
 	public void SaveGame(string cheminFichierSaveWrite)
 	{
 		using var saveFile = FileAccess.Open(cheminFichierSaveWrite, FileAccess.ModeFlags.Write);
@@ -113,6 +99,9 @@ public partial class SaveManager : Node
 
 			// Call the node's save function.
 			var nodeData = saveNode.Call("Save");
+			
+			//Debug
+			GD.Print($"NodeData : {nodeData}");
 
 			// Json provides a static method to serialized JSON string.
 			var jsonString = Json.Stringify(nodeData);

@@ -1,12 +1,22 @@
 using Godot;
 using System;
 
-public partial class LevelManager : GodotObject
+public partial class LevelManager : Node
 {
-	private double _timeElapsed = 0;
-	public void LoadLevel()
+	public SceneTree GameManager = CustomMainLoop.GetInstance();
+	
+	public void LoadLevel(string path)
 	{
-		GD.Print("Initialized:");
-		GD.Print($"  Starting Time: {_timeElapsed}");
+		// On vérifie si le chemin d'accès renvoie bien une scène
+		var levelPacked = GD.Load<PackedScene>("res://scenes/" + path);
+		if (levelPacked == null)
+		{
+			GD.PrintErr($"Scene not found: {path}");
+			return;
+		}
+		
+		GameManager.ChangeSceneToPacked(levelPacked);
+		
+		GD.Print($"Loaded scene: {path}");
 	}
 }

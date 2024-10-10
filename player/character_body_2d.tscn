@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dra4s20nocs6r"]
 
-[ext_resource type="Script" path="res://player/character_body_2d.gd" id="1_0xg06"]
+[ext_resource type="Script" path="res://player/character_body_2d.cs" id="1_3bjst"]
 [ext_resource type="Texture2D" uid="uid://b4oeet3v1cbe" path="res://assets/FREE_Samurai 2D Pixel Art/FREE_Samurai 2D Pixel Art/Sprites/RUN.png" id="3_oxq7w"]
 [ext_resource type="Texture2D" uid="uid://dj467glnibk3t" path="res://assets/FREE_Samurai 2D Pixel Art/FREE_Samurai 2D Pixel Art/Sprites/IDLE.png" id="4_em7sy"]
 [ext_resource type="Script" path="res://player/animated_sprite_2d.gd" id="5_ov4rj"]
@@ -115,7 +115,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -10)
 disable_mode = 1
-script = ExtResource("1_0xg06")
+script = ExtResource("1_3bjst")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
