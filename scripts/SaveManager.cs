@@ -3,20 +3,21 @@ using System;
 
 public partial class SaveManager : Node
 {
+	
 	private static SaveManager instance;
-
 	public static SaveManager GetInstance() {
 	if (instance == null){
 		instance = new SaveManager();
 		}
 	return instance;
 	}
+	
 
-public override void _Ready()
-{
-	LoadGame("user://savegame.save");
-	GD.Print("Character Loaded !");
-}
+	public override void _Ready()
+	{
+		LoadGame("user://savegame.save");
+		GD.Print("Character Loaded !");
+	}
 
 	public void LoadGame(string cheminFichierSaveLoad)
 	{
@@ -30,7 +31,7 @@ public override void _Ready()
 		// This will vary wildly depending on the needs of a project, so take care with
 		// this step.
 		// For our example, we will accomplish this by deleting saveable objects.
-		
+		 
 		var saveNodes = GetTree().GetNodesInGroup("Persist");
 		foreach (Node saveNode in saveNodes)
 		{

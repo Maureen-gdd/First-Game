@@ -53,14 +53,15 @@ public partial class CustomMainLoop : SceneTree
 		if (Input.IsKeyPressed(Key.Escape))
 		{
 			_Finalize();
-			Quit();
-			_saveManager.SaveGame("user://savegame.save");
 			return true;
 		}
 		return false;
 	}
-	private void _Finalize()
+	public void _Finalize()
 	{
+		GD.Print("Test Saving !");
+		_saveManager.SaveGame("user://savegame.save");
+		Quit();
 		GD.Print("Finalized finished !");
 	}
 }

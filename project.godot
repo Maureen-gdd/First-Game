@@ -51,6 +51,10 @@ down_axis={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
 ]
 }
+esc={
+"deadzone": 0.5,
+"events": []
+}
 
 [rendering]
 

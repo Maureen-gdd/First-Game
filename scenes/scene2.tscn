@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0jp5cssdl5dy"]
+[gd_scene load_steps=8 format=3 uid="uid://c0jp5cssdl5dy"]
 
 [ext_resource type="Texture2D" uid="uid://ccfl3cbcsqxva" path="res://assets/simple_tileset_32x32_version1.0/simple_tileset_32x32_version1.0/tilesheet_basic.png" id="1_uxapv"]
 [ext_resource type="PackedScene" uid="uid://dra4s20nocs6r" path="res://player/character_body_2d.tscn" id="2_548n6"]
+[ext_resource type="Script" path="res://scenes/Button.cs" id="3_gv8xn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dedqr"]
 size = Vector2(20, 388.5)
@@ -658,3 +659,11 @@ layer_0/tile_data = PackedInt32Array(393198, 851970, 1, 458734, 851970, 2, 52427
 position = Vector2(1, 1)
 disable_mode = 0
 collision_layer = 65535
+
+[node name="Button" type="Button" parent="."]
+offset_left = 199.0
+offset_top = -138.0
+offset_right = 265.0
+offset_bottom = -107.0
+text = "Exit"
+script = ExtResource("3_gv8xn")

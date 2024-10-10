@@ -15,7 +15,7 @@ public partial class character_body_2d : Godot.CharacterBody2D
 
 		velocity.X = directionX * SPEED;
 		velocity.Y = directionY * SPEED;
-
+		
 		if (directionX != 0)
 		{
 			animation.Play("running");
@@ -29,7 +29,7 @@ public partial class character_body_2d : Godot.CharacterBody2D
 		{
 			animation.Play("idle");
 		}
-
+		
 		MoveAndCollide(velocity * (float)delta);
 	}
 	public Godot.Collections.Dictionary<string, Variant> Save()
