@@ -19,7 +19,7 @@ public partial class CustomMainLoop : SceneTree
 	GD.Print("Initialized begins.......");
 	_levelManager = new LevelManager();
 	Root.AddChild(_levelManager);
-	//_levelManager.LoadLevel("scene2.tscn");
+	_levelManager.LoadLevel("scene2.tscn");
 	_saveManager = new SaveManager();
 	Root.AddChild(_saveManager);
 	
