@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmobq074igt73"]
+[gd_scene load_steps=11 format=3 uid="uid://bmobq074igt73"]
 
 [ext_resource type="PackedScene" uid="uid://dra4s20nocs6r" path="res://player/character_body_2d.tscn" id="1_cs57m"]
 [ext_resource type="Script" path="res://scripts/Area2d.cs" id="3_op3k5"]
 [ext_resource type="Script" path="res://scripts/TriggerArea.cs" id="4_e25r0"]
 [ext_resource type="Texture2D" uid="uid://ccfl3cbcsqxva" path="res://assets/simple_tileset_32x32_version1.0/simple_tileset_32x32_version1.0/tilesheet_basic.png" id="4_y4c8f"]
+[ext_resource type="Script" path="res://scripts/Button.cs" id="5_xq0pm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dedqr"]
 size = Vector2(20, 126.25)
@@ -675,3 +676,11 @@ script = ExtResource("3_op3k5")
 position = Vector2(283, 9)
 shape = SubResource("RectangleShape2D_5bqqn")
 script = ExtResource("4_e25r0")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 220.0
+offset_top = -137.0
+offset_right = 262.0
+offset_bottom = -106.0
+text = "Quit"
+script = ExtResource("5_xq0pm")

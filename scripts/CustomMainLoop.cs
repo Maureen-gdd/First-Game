@@ -19,11 +19,9 @@ public partial class CustomMainLoop : SceneTree
 	GD.Print("Initialized begins.......");
 	_levelManager = new LevelManager();
 	Root.AddChild(_levelManager);
-	_levelManager.LoadLevel("scene1.tscn");
+	
 	_saveManager = new SaveManager();
 	Root.AddChild(_saveManager);
-	
-	//OS.Connect("about_to_quit", this, nameof(OnAboutToQuit));
 	GD.Print("Initialization finish !");
 }
 
@@ -53,15 +51,15 @@ public partial class CustomMainLoop : SceneTree
 		if (Input.IsKeyPressed(Key.Escape))
 		{
 			_Finalize();
-			Quit();
-			_saveManager.SaveGame("user://savegame.save");
 			return true;
 		}
 		return false;
 	}
-	
-	private void _Finalize()
+	public void _Finalize()
 	{
+		GD.Print("Test Saving !");
+		_saveManager.SaveGame("user://savegame.save");
+		Quit();
 		GD.Print("Finalized finished !");
 	}
 }
