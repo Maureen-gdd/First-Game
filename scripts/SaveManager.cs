@@ -4,6 +4,7 @@ using System;
 public partial class SaveManager : Node
 {
 	private static SaveManager instance;
+	private bool justOneTime = false;
 
 	public static SaveManager GetInstance() 
 	{
@@ -16,9 +17,17 @@ public partial class SaveManager : Node
 
 public override void _Ready()
 {
-	//LoadScene("user://savegame.save");
-	LoadGame("user://savegame.save");
-	GD.Print("Character Loaded !");
+	LoadScene("user://savegame.save");
+}
+
+public override void _Process(double delta)
+{
+	if(justOneTime == false) 
+	{
+		LoadGame("user://savegame.save");
+		GD.Print("Character Loaded !");
+		justOneTime = true;
+	}
 }
 
 public void LoadScene(string cheminFichierSaveLoad)
