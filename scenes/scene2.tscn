@@ -679,9 +679,9 @@ shape = SubResource("RectangleShape2D_riqb8")
 script = ExtResource("4_vhbps")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 220.0
-offset_top = -137.0
-offset_right = 262.0
-offset_bottom = -106.0
-text = "Quit"
+offset_left = 159.0
+offset_top = -138.0
+offset_right = 257.0
+offset_bottom = -107.0
+text = "Quit & Save"
 script = ExtResource("5_qcb8r")
