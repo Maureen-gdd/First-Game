@@ -16,7 +16,7 @@ public partial class SaveManager : Node
 
 public override void _Ready()
 {
-	LoadScene("user://savegame.save");
+	//LoadScene("user://savegame.save");
 	LoadGame("user://savegame.save");
 	GD.Print("Character Loaded !");
 }
@@ -27,17 +27,6 @@ public void LoadScene(string cheminFichierSaveLoad)
 		{
 			GD.Print($"No Save !");
 			return; // Error! We don't have a save to load.
-		}
-
-		// We need to revert the game state so we're not cloning objects during loading.
-		// This will vary wildly depending on the needs of a project, so take care with
-		// this step.
-		// For our example, we will accomplish this by deleting saveable objects.
-		
-		var saveNodes = GetTree().GetNodesInGroup("Persist");
-		foreach (Node saveNode in saveNodes)
-		{
-			saveNode.QueueFree();
 		}
 
 		// Load the file line by line and process that dictionary to restore the object
