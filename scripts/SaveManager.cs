@@ -4,6 +4,7 @@ using System;
 public partial class SaveManager : Node
 {
 	private static SaveManager instance;
+	private bool caca = false;
 
 	public static SaveManager GetInstance() 
 	{
@@ -16,9 +17,18 @@ public partial class SaveManager : Node
 
 public override void _Ready()
 {
-	//LoadScene("user://savegame.save");
-	LoadGame("user://savegame.save");
-	GD.Print("Character Loaded !");
+	LoadScene("user://savegame.save");
+	
+}
+
+public override void _Process(double delta)
+{
+	if(caca == false) 
+	{
+		LoadGame("user://savegame.save");
+		GD.Print("Character Loaded !");
+		caca = true;
+	}
 }
 
 public void LoadScene(string cheminFichierSaveLoad)

@@ -22,7 +22,7 @@ public partial class CustomMainLoop : SceneTree
 	
 	_saveManager = new SaveManager();
 	Root.AddChild(_saveManager);
-	_saveManager.LoadScene("user://savegame.save");
+	//_saveManager.LoadScene("user://savegame.save");
 	GD.Print("Initialization finish !");
 }
 
